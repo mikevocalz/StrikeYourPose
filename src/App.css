@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   height: 100%;
+  width: 100%
 }
 
 /* <--// HEADER //--> */
@@ -14,12 +15,28 @@
   position: relative;
   font-family: 'Arial Black';
 }
+.iframe-div {
+   position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 550px !important;
+    border: 0;
+}
+
+.resp-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+     width: 100% !important;
+    height: 550px !important;
+}
 
 .item-slider .caption{
   -webkit-text-stroke: 1px black;
   color: white;
   text-shadow:
-      3px 3px 0 red,
+      3px 3px 0 #778899,
     -1px -1px 0 #000,  
      1px -1px 0 #000,
      -1px 1px 0 #000,
@@ -30,8 +47,8 @@
   right: 0;
   padding: 30px;
   text-align: right;
-  width: 800px;
-  font-size: 20pt;
+  width: 600px;
+  font-size: 22pt;
   text-transform: uppercase
 }
 
@@ -49,9 +66,44 @@
   color: #fff
 }
 
+@media all and (min-width: 368px) {
+  .iframe-div {
+   position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 260px !important;
+    border: 0;
+}
+
+.resp-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+     width: 100% !important;
+    height: 260px !important;
+}
+}
+
+
 
 @media all and (max-width: 568px) {
+  .iframe-div {
+   position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 240px !important;
+    border: 0;
+}
 
+.resp-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+     width: 100% !important;
+    height: 240px !important;
+}
   .item-slider h3 {
     font-weight: 'bold';
     margin: 0;
@@ -66,7 +118,7 @@
     -webkit-text-stroke: 1px black;
     color: white;
     text-shadow:
-        1px 1px 0 red,
+        1px 1px 0 #C0C0C0	,
       -1px -1px 0 #000,  
        1px -1px 0 #000,
        -1px 1px 0 #000,
@@ -77,7 +129,7 @@
     right: 0;
     padding: 8px;
     text-align: right;
-    width: 250px;
+    width: 200px;
     font-size: 7pt;
     text-transform: uppercase
   }

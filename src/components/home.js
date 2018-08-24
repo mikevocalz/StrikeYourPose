@@ -1,9 +1,8 @@
 import React, {  Fragment } from 'react'
 
 import { compose } from 'recompose'
-import { Route, Link, Switch, withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import Slider from 'react-slick';
-import { Dots } from 'react-activity';
 import 'react-activity/dist/react-activity.css';
 
 import PropTypes from 'prop-types';
@@ -17,15 +16,14 @@ import Typography from '@material-ui/core/Typography';
 import Grid from "@material-ui/core/Grid";
 import List from '@material-ui/core/List';
 
-import SeasonInfo from './seasonInfo';
-
-
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
     alignSelf: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginLeft: "auto",
+    marginRight: "auto"
   },
   card: {
     maxWidth: '400px',
@@ -135,7 +133,7 @@ const generateEpisodes = ({ pose, episodes, episode, classes, match: { url },loc
     return (
       <Fragment>
         <Grid  container className={classes.root} spacing={16}>
-        <Grid item xs={12} sm={10} md={12} xl={10}>
+        <Grid item xs={12} sm={10} md={12} lg={12} xl={10}>
    
           <Grid item  alignItems='center' wrap="wrap" container className={classes.demo} style={{ marginTop: 20 }} direction='row' justify="center" spacing={16}>
               {pose.episodes.map(item => {
@@ -177,17 +175,8 @@ const generateEpisodes = ({ pose, episodes, episode, classes, match: { url },loc
 
 
 
-const Home = (props,  classes, episodes, episode, match ) => {
-  this.state = { isLoading: true }
-
-  if (!this.state.isLoading) {
-    return(
-      <div style={{ justifyContent: 'center', alignItems: 'center' }}>
-        <Dots
-        />
-      </div>
-    )
-  } else {
+const Home = (props,  classes ) => {
+  
     return (
       <Fragment>
         <div style={{ padding: '2%'}}>
@@ -199,17 +188,11 @@ const Home = (props,  classes, episodes, episode, match ) => {
                   Episodes
             </Typography>
         </Grid>
-
         <List style={{ marginTop: 90, backgroundColor: 'transparent', height: 'auto', width: '100%'}}>
-          
           {generateEpisodes(props)}
         </List>
-       
-         {/* <Route path={`${this.props.match.url}/:id`} render={props => <SeasonInfo data={this.props.pose.episodes} {...props} />} /> */}
-      
       </Fragment>
     );
-  }
 }
 
 

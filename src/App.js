@@ -13,8 +13,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      pose: [], 
-       };
+      pose: {
+        slides: [],
+        episodes: [],
+        cast: [],
+      }
+    };
     this.fetchData = this.fetchData.bind(this);
   }
 
@@ -46,6 +50,7 @@ class App extends Component {
             <Switch>
               <Route exact path='/' render={ (props) => <Home {...props} pose={pose} />}/>
               <Route path='/cast' render={ (props) => <Cast {...props}  pose={pose} />}/>
+              <Route path='/episode/:id' render={(props) => <SeasonInfo {...props} pose={pose} />} />
             </Switch>
           </Header>
       </BrowserRouter>
@@ -54,10 +59,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-
-// <header className="App-header">
-// <img src={logo} className="App-logo" alt="logo" />
-// <h1 className="App-title">Welcome to React</h1>
-// </header>
