@@ -122,7 +122,7 @@ const generateSlides = ({pose}) => {
 }
 
 
-const generateEpisodes = ({ pose, episodes, episode, classes, match: { url },location: { pathname } }) => {
+const generateEpisodes = ({ pose, classes, location: { pathname } }) => {
 
 
   if (pose.episodes) {

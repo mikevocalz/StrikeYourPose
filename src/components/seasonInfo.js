@@ -11,6 +11,12 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
+
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+
+
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import Spinner from "react-activity/lib/Spinner";
 import "react-activity/lib/Dots/Dots.css";
@@ -25,8 +31,8 @@ const styles = theme => ({
     borderRadius: 10,
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop:30,
-    paddingBottom: 40
+    marginTop: 30,
+    paddingBottom: 100
   },
   header: {
     marginLeft: 0
@@ -40,13 +46,35 @@ const styles = theme => ({
   leftIcon: {
     marginRight: theme.spacing.unit,
   },
+  gridRoot: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.paper,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10, 
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+  },
+  gridList: {
+    width: 400,
+    minHeight: '80%',
+    overflow: 'hidden',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10, 
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+  },
+  subheader: {
+    width: '100%',
+  },
 });
-
-
 
 const episodeInfo = ({ match, history, pose, classes }) => {
   const episode = pose.episodes.find(episode => episode.id === match.params.id );
   let episodeData
+
 
   if (episode)
     episodeData = <MuiThemeProvider theme={theme}>
@@ -65,7 +93,7 @@ const episodeInfo = ({ match, history, pose, classes }) => {
           </Grid>
           <hr />
           <h3>{episode.description}</h3>
-        <div className="resp-container"
+          <div className="resp-container"
           style={{ width: "100%", padding: 10, backgroundColor: "#000", borderRadius: 10, margin: "0 auto", overflow: "hidden" }}
           >
           <iframe className="iframe-div" title="promo" id="video" allow="encrypted-media"
@@ -121,6 +149,44 @@ const episodeInfo = ({ match, history, pose, classes }) => {
           <h4 style={{ marginTop: 5, marginLeft: 10 }}>
             From $1.99 (SD) on Google Play, $13.99 for the Full Season
           </h4>
+          
+          <Typography variant="title" style={{ marginTop: 15, marginBottom: 10, fontWeight: "bold", textTransform: "uppercase", color: "#CD853F", textShadowColor: "black", textShadow: "1px 1px #000" }}>
+            Gallery:
+          </Typography>
+          <div className={classes.gridRoot}>
+          <GridList cellHeight={280} className={classes.gridList} 
+          style={{ width: '100%', margin: "0 auto",
+           overflow: 'hidden',
+           borderTopLeftRadius: 10,
+           borderTopRightRadius: 10, 
+           borderBottomLeftRadius: 10,
+           borderBottomRightRadius: 10,  }}>
+        <GridListTile key="Subheader" cols={2} style={{ height: 'auto', borderRadius: 10, overflow: 'hidden' }}>
+        </GridListTile>
+        {episode.images.map(pic => (
+          <GridListTile key={pic.img} style={{ 
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10, 
+            borderBottomLeftRadius: 10,
+            borderBottomRightRadius: 10,
+            overflow: 'hidden' }}>
+            <img src={pic.img} alt="images-gallery" style={{ minHeight: 260, 
+              borderTopLeftRadius: 10,
+              borderTopRightRadius: 10, 
+              borderBottomLeftRadius: 10,
+              borderBottomRightRadius: 10,
+              overflow: 'hidden'}}/>
+            <GridListTileBar style={{ opacity: 0.5,
+              overflow: 'hidden',
+              borderBottomLeftRadius: 10,
+              borderBottomRightRadius: 10
+             }} />
+          </GridListTile>
+        ))}
+      </GridList>
+
+          </div>
+
         </Paper>
       </MuiThemeProvider>;
   else episodeData = (
@@ -129,9 +195,17 @@ const episodeInfo = ({ match, history, pose, classes }) => {
     </div>
     )
 
+    const handleKeyPress = event => {
+      if (event.key === 'Delete') {
+        history.goBack() 
+      }
+    };
+  
+
   return <Fragment>
       <Grid item className={classes.header} style={{ position: "absolute", flex: 1, marginBottom: 0, marginTop: -10, marginLeft: -130, backgroundColor: "white", width: 350, height: 50, borderBottomRightRadius: 10, borderTopRightRadius: 10, flexShrink: 1 }}>
-        <Button onClick={()=> history.goBack()}>
+        <Button onClick={ ()=> history.goBack() }
+        onKeyPress={ (e) => this.handleKeyPress(e) }>
           <Typography variant="display1" style={{ fontWeight: "bold", textTransform: "uppercase", color: "black", marginLeft: 100, flexShrink: 1 }}>
             ⬅ BACK
           </Typography>

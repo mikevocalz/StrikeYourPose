@@ -4,6 +4,14 @@
   width: 100%
 }
 
+#tri {
+  width: 0px;
+  background: antiquewhite;
+  border-top: 60px solid transparent;
+  border-bottom: 60px solid blue;
+  border-left: 60px solid green;
+  border-right: 65px solid green;
+}
 /* <--// HEADER //--> */
 
 .item-slider{
@@ -20,7 +28,7 @@
     top: 0;
     left: 0;
     width: 100% !important;
-    height: 550px !important;
+    height: 750px !important;
     border: 0;
 }
 
@@ -29,7 +37,7 @@
     overflow: hidden;
     padding-top: 56.25%;
      width: 100% !important;
-    height: 550px !important;
+    height: 750px !important;
 }
 
 .item-slider .caption{
@@ -66,7 +74,7 @@
   color: #fff
 }
 
-@media all and (min-width: 368px) {
+@media all and (max-width: 368px) {
   .iframe-div {
    position: absolute;
     top: 0;
